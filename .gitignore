@@ -13,8 +13,8 @@ debug
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-.readmes/
+.readmes
 
-.vscode/
+.vscode
 
 config/config.yaml
