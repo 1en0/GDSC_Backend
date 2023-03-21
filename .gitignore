@@ -17,4 +17,6 @@ debug
 
 .vscode
 
+.idea
+
 config/config.yaml
