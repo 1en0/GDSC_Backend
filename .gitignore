@@ -19,6 +19,9 @@ debug
 .idea
 .readmes
 
+# Enviroment parameters
+.env
+
 /.readmes
 
 /.vscode
