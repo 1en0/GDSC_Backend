@@ -13,12 +13,11 @@ debug
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
+# IDE ignore file
+.dockerignore
+.vscode
+.idea
 .readmes
 
-.vscode
-
-.idea
-
-img
-
-config/config.yaml
+# Enviroment parameters
+.env
