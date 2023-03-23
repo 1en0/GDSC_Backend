@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func UserInfo(c *gin.Context) {
+func GetUserInfo(c *gin.Context) {
 	id := c.GetString("sub")
 	username := c.GetString("name")
 	picture := c.GetString("picture")

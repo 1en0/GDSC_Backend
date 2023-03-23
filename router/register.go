@@ -11,7 +11,7 @@ func InitRouter() *gin.Engine {
 
 	router.Use(googleauth.FakeAuth())
 
-	router.GET("/user/", controller.UserInfo)
+	router.GET("/user/", controller.GetUserInfo)
 
 	router.GET("/record/list/", controller.ListRecord)
 	router.POST("/record/create/", controller.CreateRecord)
