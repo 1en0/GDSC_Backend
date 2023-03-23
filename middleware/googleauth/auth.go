@@ -43,3 +43,14 @@ func Auth() gin.HandlerFunc {
 		context.Next()
 	}
 }
+
+// a fake authentication function
+// add test data into context
+
+func FakeAuth() gin.HandlerFunc {
+	return func(context *gin.Context) {
+		context.Set("sub", "110169484474386276334")
+		context.Set("name", "Test User")
+		context.Set("picture", "https://lh4.googleusercontent.com/-kYgzyAWpZzJ/ABCDEFGHI/AAAJKLMNOP/tIXL9Ir44LE/s99-c/photo.jpg")
+	}
+}

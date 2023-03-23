@@ -3,12 +3,15 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"hello-run/controller"
+	"hello-run/middleware/googleauth"
 )
 
 func InitRouter() *gin.Engine {
 	router := gin.Default()
 
-	router.GET("/user/", controller.UserInfo)
+	router.Use(googleauth.FakeAuth())
+
+	router.GET("/user/", controller.GetUserInfo)
 
 	router.GET("/record/list/", controller.ListRecord)
 	router.POST("/record/create/", controller.CreateRecord)
