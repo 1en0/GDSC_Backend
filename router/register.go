@@ -3,10 +3,13 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"hello-run/controller"
+	"hello-run/middleware/googleauth"
 )
 
 func InitRouter() *gin.Engine {
 	router := gin.Default()
+
+	router.Use(googleauth.FakeAuth())
 
 	router.GET("/user/", controller.UserInfo)
 
