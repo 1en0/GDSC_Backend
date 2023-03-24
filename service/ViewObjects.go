@@ -25,8 +25,8 @@ type RecordVo struct {
 
 type HouseholdVo struct {
 	Id         int64 `json:"id"`
-	Age        int32 `json:"age"`
-	Height     int32 `json:"height"`
+	Age        int   `json:"age"`
+	Height     int   `json:"height"`
 	Wheelchair bool  `json:"wheelchair"`
 }
 

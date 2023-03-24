@@ -2,6 +2,7 @@ package dao
 
 import (
 	"log"
+	"strconv"
 )
 
 type Room struct {
@@ -23,8 +24,20 @@ func GetRoomListByUser(userId string) ([]Room, error) {
 		//Where(&Room{UserId: userId, Deleted: 0}).
 		Where(map[string]interface{}{"user_id": userId, "deleted": false}).
 		Find(&roomList).Error; err != nil {
-		log.Println("fail to get room list by user")
+		log.Println("fail to get room list by user: " + userId)
 		return nil, err
 	}
 	return roomList, nil
+}
+
+func GetRoomInfoById(id int64) (*Room, error) {
+	var room Room
+	if err := Db.
+		Model(&Room{}).
+		Where(map[string]interface{}{"id": id, "deleted": false}).
+		First(&room).Error; err != nil {
+		log.Println("fail to find room: " + strconv.FormatInt(id, 10))
+		return nil, err
+	}
+	return &room, nil
 }
