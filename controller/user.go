@@ -12,7 +12,11 @@ func GetUserInfo(c *gin.Context) {
 	picture := c.GetString("picture")
 	userVo, err := service.GetUserVo(id, username, picture)
 	if err != nil {
-		return
+		c.JSON(http.StatusOK, Response[service.UserVo]{
+			StatusCode: 1,
+			StatusMsg:  err.Error(),
+			Comment:    service.UserVo{},
+		})
 	}
 	c.JSON(http.StatusOK, Response[service.UserVo]{
 		StatusCode: 0,
