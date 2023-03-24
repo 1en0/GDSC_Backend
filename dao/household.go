@@ -19,6 +19,10 @@ func (Household) TableName() string {
 	return "household"
 }
 
+//if no household satisfies the search condition
+//it will return a list of Household with length 0
+//no error will be thrown
+
 func GetHouseholdListByRoomId(roomId int64) ([]Household, error) {
 	var householdList []Household
 	if err := Db.
