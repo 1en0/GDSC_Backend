@@ -21,9 +21,3 @@ debug
 
 # Enviroment parameters
 .env
-
-/.readmes
-
-/.vscode
-
-/config/config.yaml

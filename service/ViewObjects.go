@@ -1,18 +1,12 @@
-package resp
+package service
 
 import "time"
 
-type Response[T UserVo | RecordVo | []RecordVo | FullRoomVo] struct {
-	StatusCode int32  `json:"status_code"`
-	StatusMsg  string `json:"status_msg"`
-	Comment    T      `json:"comment"`
-}
-
 type UserVo struct {
-	Id     int64         `json:"id"`
-	Name   string        `json:"name"`
-	Avatar string        `json:"avatar"`
-	Rooms  []ShortRoomVo `json:"rooms"`
+	Id      string        `json:"id"`
+	Name    string        `json:"name"`
+	Picture string        `json:"picture"`
+	Rooms   []ShortRoomVo `json:"rooms"`
 }
 
 type ShortRoomVo struct {
@@ -31,8 +25,8 @@ type RecordVo struct {
 
 type HouseholdVo struct {
 	Id         int64 `json:"id"`
-	Age        int32 `json:"age"`
-	Height     int32 `json:"height"`
+	Age        int   `json:"age"`
+	Height     int   `json:"height"`
 	Wheelchair bool  `json:"wheelchair"`
 }
 
