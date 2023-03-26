@@ -2,7 +2,6 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"hello-run/controller/resp"
 	"hello-run/service"
 	"net/http"
 )
@@ -13,9 +12,13 @@ func GetUserInfo(c *gin.Context) {
 	picture := c.GetString("picture")
 	userVo, err := service.GetUserVo(id, username, picture)
 	if err != nil {
-		return
+		c.JSON(http.StatusOK, Response[service.UserVo]{
+			StatusCode: 1,
+			StatusMsg:  err.Error(),
+			Comment:    service.UserVo{},
+		})
 	}
-	c.JSON(http.StatusOK, resp.Response[service.UserVo]{
+	c.JSON(http.StatusOK, Response[service.UserVo]{
 		StatusCode: 0,
 		StatusMsg:  "test",
 		Comment:    *userVo,

@@ -1,8 +1,8 @@
-package resp
+package controller
 
 import "hello-run/service"
 
-type Response[T service.UserVo | service.RecordVo | []service.RecordVo | service.FullRoomVo] struct {
+type Response[T service.UserVo | service.RecordVo | []service.RecordVo | service.FullRoomVo | string] struct {
 	StatusCode int32  `json:"status_code"`
 	StatusMsg  string `json:"status_msg"`
 	Comment    T      `json:"comment"`

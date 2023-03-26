@@ -18,7 +18,7 @@ func InitRouter() *gin.Engine {
 	router.POST("/record/update/", controller.UpdateRecord)
 	router.POST("/record/delete/", controller.DeleteRecord)
 
-	router.GET("/room/", controller.RoomInfo)
+	router.GET("/room/", controller.GetRoomInfo)
 	router.POST("/room/update/", controller.UpdateRoom)
 	router.POST("/room/create/", controller.CreateRoom)
 	router.POST("/room/delete/", controller.DeleteRoom)
