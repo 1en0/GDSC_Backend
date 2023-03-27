@@ -24,9 +24,11 @@ create table if not exists record
     primary key,
     user_id   varchar(255)                   not null comment 'owner of the room which the record is related to',
     room_id   bigint                         not null comment 'which room this record is related to',
-    risk_type enum ('low', 'medium', 'high') not null comment 'how important this record is',
+    risk_type int not null comment 'how important this record is: 0-Low; 1-Medium; 2-High',
     title     varchar(255)                   null comment 'title of the record',
     content   text                           null comment 'content of the record',
+    screenshot text null comment 'screenshot of the record',
+    created_at timestamp not null default current_timestamp comment 'create time',
     deleted   tinyint(1) default 0           not null comment 'if this record is deleted, false by default'
     );
 
