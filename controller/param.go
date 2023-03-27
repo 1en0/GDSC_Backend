@@ -7,6 +7,9 @@ import (
 	"strconv"
 )
 
+// check if the parameter can be converted into the designated type
+// if the parameter is an empty string and is optional, return the default value of the designated type
+
 func checkValidInt64(c *gin.Context, paramKey string, optional bool) (int64, error) {
 	value := c.Query(paramKey)
 	if optional && value == "" {
