@@ -62,10 +62,10 @@ func UpdateRoom(c *gin.Context) {
 }
 
 func CreateRoom(c *gin.Context) {
-	id := c.GetString("sub")
+	userId := c.GetString("sub")
 	roomName := c.Query("room_name")
 	city := c.Query("city")
-	roomVo, err := service.CreateRoom(id, roomName, city)
+	roomVo, err := service.CreateRoom(userId, roomName, city)
 	if err != nil {
 		c.JSON(http.StatusOK, Response[service.FullRoomVo]{
 			StatusCode: 1,
@@ -81,8 +81,15 @@ func CreateRoom(c *gin.Context) {
 }
 
 func DeleteRoom(c *gin.Context) {
-	roomId, _ := strconv.ParseInt(c.Query("room_id"), 10, 64)
-	err := service.DeleteRoomByRoomId(roomId)
+	roomId, err := strconv.ParseInt(c.Query("room_id"), 10, 64)
+	if err != nil {
+		c.JSON(http.StatusOK, Response[service.FullRoomVo]{
+			StatusCode: 1,
+			StatusMsg:  fmt.Sprintf("Room id %v is invalid: %v", roomId, err.Error()),
+		})
+		return
+	}
+	err = service.DeleteRoomByRoomId(roomId)
 	if err != nil {
 		c.JSON(http.StatusOK, Response[string]{
 			StatusCode: 1,
