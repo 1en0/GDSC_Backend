@@ -1,6 +1,7 @@
 package dao
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 )
@@ -33,4 +34,59 @@ func GetHouseholdListByRoomId(roomId int64) ([]Household, error) {
 		return nil, err
 	}
 	return householdList, nil
+}
+
+func CreateHousehold(userId string, roomId int64, age int, height int, wheelchair bool) (*Household, error) {
+	household := Household{
+		UserId:     userId,
+		RoomId:     roomId,
+		Age:        age,
+		Height:     height,
+		Wheelchair: wheelchair,
+		Deleted:    false,
+	}
+	if err := Db.
+		Model(&Household{}).
+		Create(&household).
+		Error; err != nil {
+		return nil, err
+	}
+	return &household, nil
+}
+
+func UpdateHousehold(id int64, age int, height int, wheelchair bool) (int64, error) {
+	if err := Db.
+		Model(&Household{Id: id}).
+		Updates(Household{Age: age, Height: height, Wheelchair: wheelchair}).
+		Error; err != nil {
+		return 0, err
+	}
+	return id, nil
+}
+
+func DeleteHouseholdById(id int64) error {
+	if err := Db.
+		Model(&Room{}).
+		Where(map[string]interface{}{"id": id}).
+		Update("deleted", true).
+		Error; err != nil {
+		log.Println(fmt.Sprintf("fail to delete room: %v", id))
+		return err
+	}
+	return nil
+}
+
+// if no room satisfies the search condition
+// gorm.ErrRecordNotFound will be thrown
+
+func GetHouseholdInfoById(id int64) (*Household, error) {
+	var household Household
+	if err := Db.
+		Model(&Household{}).
+		Where(map[string]interface{}{"id": id, "deleted": false}).
+		First(&household).Error; err != nil {
+		log.Println(fmt.Sprintf("fail to find room: %v", id))
+		return nil, err
+	}
+	return &household, nil
 }

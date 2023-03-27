@@ -13,7 +13,7 @@ func InitRouter() *gin.Engine {
 
 	router.GET("/user/", controller.GetUserInfo)
 
-	router.GET("/record/list/", controller.ListRecord)
+	router.GET("/record/list/", controller.ListRecordByRoomId)
 	router.POST("/record/create/", controller.CreateRecord)
 	router.POST("/record/update/", controller.UpdateRecord)
 	router.POST("/record/delete/", controller.DeleteRecord)

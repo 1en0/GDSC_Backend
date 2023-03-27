@@ -4,10 +4,11 @@ go 1.19
 
 require (
 	github.com/gin-gonic/gin v1.9.0
-	github.com/jinzhu/gorm v1.9.16
+	github.com/pkg/errors v0.9.1
 	github.com/spf13/viper v1.15.0
 	google.golang.org/api v0.107.0
 	gorm.io/driver/mysql v1.4.7
+	gorm.io/gorm v1.23.8
 )
 
 require (
@@ -57,5 +58,4 @@ require (
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	gorm.io/gorm v1.23.8 // indirect
 )

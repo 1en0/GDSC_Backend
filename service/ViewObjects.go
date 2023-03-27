@@ -1,6 +1,8 @@
 package service
 
-import "time"
+import (
+	"time"
+)
 
 type UserVo struct {
 	Id      string        `json:"id"`
@@ -19,8 +21,8 @@ type RecordVo struct {
 	RiskType   string    `json:"risk_type"`
 	Title      string    `json:"title"`
 	Content    string    `json:"content"`
-	Screenshot string    `json:"screenshot"`
-	CreateTime time.Time `json:"create_time"`
+	Screenshot string    `json:"screenshoot"`
+	CreatedAt  time.Time `json:"create_time"`
 }
 
 type HouseholdVo struct {
