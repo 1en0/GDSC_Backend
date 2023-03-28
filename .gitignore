@@ -21,3 +21,7 @@ debug
 
 # Enviroment parameters
 .env
+
+# Docker
+docker/
+log/
