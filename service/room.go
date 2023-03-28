@@ -1,6 +1,7 @@
 package service
 
 import (
+	"errors"
 	"hello-run/dao"
 )
 
@@ -30,11 +31,19 @@ func GetRoomInfoByRoomId(roomId int64) (*FullRoomVo, error) {
 	}, nil
 }
 
-func DeleteRoomByRoomId(roomId int64) error {
+func DeleteRoomByRoomId(userId string, roomId int64) error {
 	//first test if the room exists
 	_, err := dao.GetRoomInfoById(roomId)
 	if err != nil {
 		return err
+	}
+	//check if it is the last room of the user
+	count, err := dao.GetRoomCountByUser(userId)
+	if err != nil {
+		return err
+	}
+	if count == 1 {
+		return errors.New("could not delete the last room")
 	}
 	return dao.DeleteRoomById(roomId)
 }
