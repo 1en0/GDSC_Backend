@@ -76,11 +76,12 @@ func CreateRoom(c *gin.Context) {
 }
 
 func DeleteRoom(c *gin.Context) {
+	userId := c.GetString("sub")
 	roomId, err := checkValidInt64(c, "room_id", false)
 	if err != nil {
 		return
 	}
-	err = service.DeleteRoomByRoomId(roomId)
+	err = service.DeleteRoomByRoomId(userId, roomId)
 	if err != nil {
 		c.JSON(http.StatusOK, Response[*string]{
 			StatusCode: 1,

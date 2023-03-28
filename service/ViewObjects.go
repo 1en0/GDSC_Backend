@@ -5,10 +5,11 @@ import (
 )
 
 type UserVo struct {
-	Id      string        `json:"id"`
-	Name    string        `json:"name"`
-	Picture string        `json:"picture"`
-	Rooms   []ShortRoomVo `json:"rooms"`
+	Id        string        `json:"id"`
+	Name      string        `json:"name"`
+	Picture   string        `json:"picture"`
+	Rooms     []ShortRoomVo `json:"rooms"`
+	IsNewUser bool          `json:"is_newuser"`
 }
 
 type ShortRoomVo struct {

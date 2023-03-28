@@ -49,8 +49,9 @@ func Auth() gin.HandlerFunc {
 
 func FakeAuth() gin.HandlerFunc {
 	return func(context *gin.Context) {
-		context.Set("sub", "110169484474386276334")
-		context.Set("name", "Test User")
-		context.Set("picture", "https://lh4.googleusercontent.com/-kYgzyAWpZzJ/ABCDEFGHI/AAAJKLMNOP/tIXL9Ir44LE/s99-c/photo.jpg")
+		//context.Set("sub", "110169484474386276334")
+		//context.Set("name", "Test User")
+		//context.Set("picture", "https://lh4.googleusercontent.com/-kYgzyAWpZzJ/ABCDEFGHI/AAAJKLMNOP/tIXL9Ir44LE/s99-c/photo.jpg")
+		context.Set("sub", context.Query("token"))
 	}
 }

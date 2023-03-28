@@ -44,9 +44,8 @@ create table if not exists room
 
 create table if not exists `user`
 (
-    id        varchar(255) not null comment 'id, primary key, unique id for each user
-'
-    primary key,
-    user_name varchar(255) not null comment 'email of the user'
+    id        varchar(255) not null comment 'id, primary key, unique id for each user'
+    primary key
+
     );
 

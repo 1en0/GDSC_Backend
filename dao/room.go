@@ -17,6 +17,18 @@ func (Room) TableName() string {
 	return "room"
 }
 
+func GetRoomCountByUser(userId string) (int64, error) {
+	var count int64
+	if err := Db.
+		Model(&Room{}).
+		Where(map[string]interface{}{"user_id": userId, "deleted": false}).
+		Count(&count).
+		Error; err != nil {
+		return 0, err
+	}
+	return count, nil
+}
+
 func GetRoomListByUser(userId string) ([]Room, error) {
 	var roomList []Room
 	if err := Db.
