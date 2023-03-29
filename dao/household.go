@@ -66,7 +66,7 @@ func UpdateHousehold(id int64, age int, height int, wheelchair bool) (int64, err
 
 func DeleteHouseholdById(id int64) error {
 	if err := Db.
-		Model(&Room{}).
+		Model(&Household{}).
 		Where(map[string]interface{}{"id": id}).
 		Update("deleted", true).
 		Error; err != nil {
