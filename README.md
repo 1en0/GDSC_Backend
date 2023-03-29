@@ -2,11 +2,16 @@
 
 An android application using AR technology to create a safe living environment for the aging.
 
-## Run development server with docker
-
+## Get Started
+1. Please download the docker desktop in your pc by the link below.
+   https://docs.docker.com/desktop/install/mac-install/
 1. Docker compose up
 
    `docker compose up`
+
+    If the database cannot be constructed, please use:
+
+    `docker compose up --force-recreate --build`
 
 ## Build with docker
 
@@ -18,24 +23,5 @@ An android application using AR technology to create a safe living environment f
 
    `docker container run <container name>`
 
-## Get Start
-
-1.  Download all necessary dependencies.
-
-    `go mod tidy `
-
-1.  Install necessary DB.
-
-    `brew install mysql`
-
-1.  Create local database `gdsc`
-
-1.  Execute the [init.sql](config%2Finit.sql) file to construct table
-
-    `go run init.sql`
-
-1.  Start server
-
-    `go run main.go`
 
 Then, you can test the endpoint by port: http://localhost:8080/
