@@ -9,13 +9,11 @@ import (
 
 func GetUserInfo(c *gin.Context) {
 	id := c.GetString("sub")
-	username := c.GetString("name")
-	picture := c.GetString("picture")
-	userVo, err := service.GetUserVo(id, username, picture)
+	userVo, err := service.GetUserVo(id)
 	if err != nil {
 		c.JSON(http.StatusOK, Response[*string]{
 			StatusCode: 1,
-			StatusMsg:  fmt.Sprintf("Fail to get information of user %v: %v", username, err.Error()),
+			StatusMsg:  fmt.Sprintf("Fail to get information of user %v: %v", id, err.Error()),
 			Comment:    nil,
 		})
 	}
