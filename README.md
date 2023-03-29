@@ -1,23 +1,27 @@
 # GDSC_Backend
+
 An android application using AR technology to create a safe living environment for the aging.
 
-## Get Start
-1. Download all necessary dependencies.
+## Get Started
+1. Please download the docker desktop in your pc by the link below.
+   https://docs.docker.com/desktop/install/mac-install/
+1. Docker compose up
 
-    ``go mod tidy `` 
+   `docker compose up`
 
-2. Install necessary DB.
+    If the database cannot be constructed, please use:
 
-    ``brew install mysql``
+    `docker compose up --force-recreate --build`
 
-3. Create local database `gdsc`
+## Build with docker
 
-4. Execute the [init.sql](config%2Finit.sql) file to construct table
+1. Build image
 
-    ``go run init.sql``
+   `docker image build -t <container name> .`
 
-5. Start server
+1. Run container
 
-   ``go run main.go``
+   `docker container run <container name>`
+
 
 Then, you can test the endpoint by port: http://localhost:8080/

@@ -23,3 +23,7 @@ debug
 .env
 
 demo2-380909-e4b0b8e6ef79.json
+
+# Docker
+docker/
+log/

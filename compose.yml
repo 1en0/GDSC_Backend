@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      target: base
+    command: "air -c .air.toml"
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app/go/base
+    environment:
+      - DB_PATH=db
+      - DB_NAME=gdsc
+      - DB_PORT=3306
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: mysql
+    expose:
+      - 3306
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./log/mysql:/var/log/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: gdsc
+      MYSQL_ROOT_PASSWORD: password
+      TZ: Asia/Tokyo
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
