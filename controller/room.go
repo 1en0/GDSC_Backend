@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"hello-run/service"
@@ -59,7 +60,18 @@ func CreateRoom(c *gin.Context) {
 	userId := c.GetString("sub")
 	roomName := c.Query("room_name")
 	city := c.Query("city")
-	roomVo, err := service.CreateRoom(userId, roomName, city)
+	data, err := c.GetRawData()
+	var households []service.HouseholdReq
+	err = json.Unmarshal(data, &households)
+	if err != nil {
+		c.JSON(http.StatusOK, Response[*string]{
+			StatusCode: 1,
+			StatusMsg:  "Wrong format for household " + err.Error(),
+			Comment:    nil,
+		})
+		return
+	}
+	roomVo, err := service.CreateRoom(userId, roomName, city, households)
 	if err != nil {
 		c.JSON(http.StatusOK, Response[*string]{
 			StatusCode: 1,
