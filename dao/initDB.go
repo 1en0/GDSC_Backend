@@ -25,5 +25,13 @@ func InitDB() {
 	if err != nil {
 		panic("fail to connect database")
 	}
+
+	db.AutoMigrate(
+		&User{},
+		&Record{},
+		&Room{},
+		&Household{},
+	)
+
 	Db = db
 }

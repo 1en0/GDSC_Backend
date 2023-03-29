@@ -17,7 +17,7 @@ RUN echo "Go gcflags: ${SKAFFOLD_GO_GCFLAGS}"
 RUN CGO_ENABLED=0 go build -gcflags="${SKAFFOLD_GO_GCFLAGS}" -mod=readonly -v -o main
 
 # Now create separate deployment image
-FROM gcr.io/distroless/base AS base
+FROM gcr.io/distroless/base:debug AS base
 
 # Definition of this variable is used by 'skaffold debug' to identify a golang binary.
 # Default behavior - a failure prints a stack trace for the current goroutine.
