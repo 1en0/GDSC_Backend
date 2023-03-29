@@ -48,10 +48,22 @@ func DeleteRoomByRoomId(userId string, roomId int64) error {
 	return dao.DeleteRoomById(roomId)
 }
 
-func CreateRoom(userId string, roomName string, city string) (*FullRoomVo, error) {
+type HouseholdReq struct {
+	Age        int  `json:"age"`
+	Height     int  `json:"height"`
+	Wheelchair bool `json:"wheelchair"`
+}
+
+func CreateRoom(userId string, roomName string, city string, households []HouseholdReq) (*FullRoomVo, error) {
 	roomId, err := dao.CreateRoom(userId, roomName, city)
 	if err != nil {
 		return nil, err
+	}
+	for _, household := range households {
+		_, err = CreateHousehold(userId, roomId, household.Age, household.Height, household.Wheelchair)
+		if err != nil {
+			return nil, err
+		}
 	}
 	//return new room info
 	return GetRoomInfoByRoomId(roomId)
