@@ -30,7 +30,7 @@ func InitDB() {
 	cloudSQL := cloudsql.GetDB()
 	db, err := gorm.Open(mysql.New(mysql.Config{Conn: cloudSQL}), &gorm.Config{})
 	if err != nil {
-		panic("fail to connect database")
+		panic("fail to connect database" + err.Error())
 	}
 
 	//db.AutoMigrate(
