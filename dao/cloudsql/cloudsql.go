@@ -118,9 +118,9 @@ func mustConnect() *sql.DB {
 		log.Fatal("Missing database connection type. Please define one of INSTANCE_HOST, INSTANCE_UNIX_SOCKET, or INSTANCE_CONNECTION_NAME")
 	}
 
-	if err := migrateDB(db); err != nil {
-		log.Fatalf("unable to create table: %s", err)
-	}
+	//if err := migrateDB(db); err != nil {
+	//	log.Fatalf("unable to create table: %s", err)
+	//}
 
 	return db
 }
