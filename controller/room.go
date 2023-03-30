@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"hello-run/service"
@@ -32,6 +33,7 @@ func GetRoomInfo(c *gin.Context) {
 }
 
 func UpdateRoom(c *gin.Context) {
+	userId := c.GetString("sub")
 	roomId, err := checkValidInt64(c, "room_id", false)
 	if err != nil {
 		return
@@ -39,7 +41,18 @@ func UpdateRoom(c *gin.Context) {
 
 	roomName := c.Query("room_name")
 	city := c.Query("city")
-	roomVo, err := service.UpdateRoomByRoomId(roomId, roomName, city)
+	data, err := c.GetRawData()
+	var households []service.HouseholdReq
+	err = json.Unmarshal(data, &households)
+	if err != nil {
+		c.JSON(http.StatusOK, Response[*string]{
+			StatusCode: 1,
+			StatusMsg:  "Wrong format for household " + err.Error(),
+			Comment:    nil,
+		})
+		return
+	}
+	roomVo, err := service.UpdateRoomByRoomId(userId, roomId, roomName, city, households)
 	if err != nil {
 		c.JSON(http.StatusOK, Response[*string]{
 			StatusCode: 1,
@@ -59,7 +72,18 @@ func CreateRoom(c *gin.Context) {
 	userId := c.GetString("sub")
 	roomName := c.Query("room_name")
 	city := c.Query("city")
-	roomVo, err := service.CreateRoom(userId, roomName, city)
+	data, err := c.GetRawData()
+	var households []service.HouseholdReq
+	err = json.Unmarshal(data, &households)
+	if err != nil {
+		c.JSON(http.StatusOK, Response[*string]{
+			StatusCode: 1,
+			StatusMsg:  "Wrong format for household " + err.Error(),
+			Comment:    nil,
+		})
+		return
+	}
+	roomVo, err := service.CreateRoom(userId, roomName, city, households)
 	if err != nil {
 		c.JSON(http.StatusOK, Response[*string]{
 			StatusCode: 1,
