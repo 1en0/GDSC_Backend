@@ -2,6 +2,9 @@
 
 An android application using AR technology to create a safe living environment for the aging.
 
+## Document & Record
+https://xiaogeamadeus.notion.site/GDSC-Project-Homesei-b49e13ca38784a16b2c54a22cf8b1357
+
 ## Get Started
 1. Please download the docker desktop in your pc by the link below.
    https://docs.docker.com/desktop/install/mac-install/
