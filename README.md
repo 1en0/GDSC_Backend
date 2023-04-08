@@ -13,10 +13,14 @@ Homesei is created for [Google Solution Challenge 2023](https://developers.googl
 1. For [Good Health and Wellbeing](https://sdg-tracker.org/good-health).
 2. For [Sustainable Cities and Communities](https://sdg-tracker.org/cities).
 
-
 ## Document & Record
 The development document and meeting record is wrote in here:
 [Document Record](https://xiaogeamadeus.notion.site/GDSC-Project-Homesei-b49e13ca38784a16b2c54a22cf8b1357)
+
+## Deployment
+
+Please use the route below:
+https://gdsc-backend-25hjuyopiq-an.a.run.app
 
 ## Get Started
 1. Please download the docker desktop in your pc by the link below.
