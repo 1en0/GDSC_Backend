@@ -15,6 +15,7 @@ Homesei is created for [Google Solution Challenge 2023](https://developers.googl
 
 
 ## Document & Record
+The development document and meeting record is wrote in here:
 [Document Record](https://xiaogeamadeus.notion.site/GDSC-Project-Homesei-b49e13ca38784a16b2c54a22cf8b1357)
 
 ## Get Started
