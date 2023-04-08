@@ -1,9 +1,17 @@
 # GDSC_Backend
 
+## Homesei
+
 An android application using AR technology to create a safe living environment for the aging.
 
-## Project for Google Solution Challenge 2023
-[Link](https://developers.google.com/community/gdsc-solution-challenge)
+The Backend part for Homesei application.
+
+## Competition
+Homesei is created for [Google Solution Challenge 2023](https://developers.google.com/community/gdsc-solution-challenge).
+
+## Homesei: The 17 Sustainable Development Goals of the United Nations
+1. For [Good Health and Wellbeing](https://sdg-tracker.org/good-health).
+2. For [Sustainable Cities and Communities](https://sdg-tracker.org/cities).
 
 
 ## Document & Record
