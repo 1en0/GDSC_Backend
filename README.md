@@ -2,8 +2,12 @@
 
 An android application using AR technology to create a safe living environment for the aging.
 
+## Project for Google Solution Challenge 2023
+[Link](https://developers.google.com/community/gdsc-solution-challenge)
+
+
 ## Document & Record
-https://xiaogeamadeus.notion.site/GDSC-Project-Homesei-b49e13ca38784a16b2c54a22cf8b1357
+[Document Record](https://xiaogeamadeus.notion.site/GDSC-Project-Homesei-b49e13ca38784a16b2c54a22cf8b1357)
 
 ## Get Started
 1. Please download the docker desktop in your pc by the link below.
