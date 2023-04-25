@@ -22,6 +22,10 @@ The development document and meeting record is wrote in here:
 Please use the route below:
 https://gdsc-backend-25hjuyopiq-an.a.run.app
 
+Updated: Because we ran out of all the free money in GCP, we will stop the server.
+This image can prove that we have completed the deployment step.
+![Deploy.png](image%2FDeploy.png)
+
 ## Get Started
 1. Please download the docker desktop in your pc by the link below.
    https://docs.docker.com/desktop/install/mac-install/
